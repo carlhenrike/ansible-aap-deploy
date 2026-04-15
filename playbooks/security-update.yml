@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Aplicar apenas patches de segurança
+      yum:
+        name: '*'
+        state: latest
+        security: yes

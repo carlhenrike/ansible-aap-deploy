@@ -1,0 +1,16 @@
+- name: Instalar nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Criar config nginx
+  template:
+    src: selecao.conf.j2
+    dest: /etc/nginx/conf.d/selecao.conf
+  notify: restart nginx
+
+- name: Garantir nginx ativo
+  service:
+    name: nginx
+    state: started
+    enabled: yes
